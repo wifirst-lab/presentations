@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-mono
+  labels:
+    app: nginx_pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.7.9
+    ports:
+      - containerPort: 80
+
