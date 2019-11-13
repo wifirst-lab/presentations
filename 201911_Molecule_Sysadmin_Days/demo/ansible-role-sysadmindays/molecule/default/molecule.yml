@@ -1,0 +1,44 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+  options:
+    config-data:
+      ignore: |
+        ./virtenv/*
+platforms:
+  - name: instance-centos
+    image: centos/systemd
+    privileged: true
+    pull: false
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    command: /usr/sbin/init
+  - name: instance-debian-stretch
+    image: jrei/systemd-debian:9
+    privileged: true
+    pull: false
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    command: /lib/systemd/systemd
+  - name: instance-debian-buster
+    image: jrei/systemd-debian:10
+    privileged: true
+    pull: false
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    command: /lib/systemd/systemd
+provisioner:
+  name: ansible
+  log: true
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  options:
+    v: 1
+  lint:
+    name: flake8

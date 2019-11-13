@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Cyril Grosjean
+  description: Role de présentation de Molecule pour Sysadmin Days 2019
+  company: Wifirst SAS
+
+  license: CC-BY-4.0
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: CentOS
+      versions:
+      - 7
+    - name: Debian
+      versions:
+      - 9
+      - 10
+
+  galaxy_tags: []
+
+dependencies: []
